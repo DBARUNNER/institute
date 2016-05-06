@@ -36,6 +36,10 @@
         <link rel="stylesheet" href="assets/js/vendor/datetimepicker/css/bootstrap-datetimepicker.min.css">
         <link rel="stylesheet" href="assets/js/vendor/datatables/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="assets/js/vendor/datatables/datatables.bootstrap.min.css">
+		<link rel="stylesheet" href="assets/js/vendor/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css">
+        <link rel="stylesheet" href="assets/js/vendor/datatables/extensions/Responsive/css/dataTables.responsive.css">
+        <link rel="stylesheet" href="assets/js/vendor/datatables/extensions/ColVis/css/dataTables.colVis.min.css">
+        <link rel="stylesheet" href="assets/js/vendor/datatables/extensions/TableTools/css/dataTables.tableTools.min.css">
         <link rel="stylesheet" href="assets/js/vendor/chosen/chosen.css">
         <link rel="stylesheet" href="assets/js/vendor/summernote/summernote.css">
 
@@ -477,7 +481,7 @@
                                             <li>
                                                 <a role="button" tabindex="0"><i class="fa fa-users"></i> <span>مدیریت محصلان</span></a>
                                                 <ul>
-                                                    <li><a href="mail-inbox.html"><i class="fa fa-caret-right"></i>لیست محصلان</a></li>
+                                                    <li><a href="student"><i class="fa fa-caret-right"></i>لیست محصلان</a></li>
                                                     <li><a href="mail-compose.html"><i class="fa fa-caret-right"></i>ساختن حاضری محصلان</a></li>
                                                     <li><a href="mail-single.html"><i class="fa fa-caret-right"></i>ترانسکریپت و دیپلوم</a></li>
                                                 </ul>
@@ -485,11 +489,9 @@
                                             <li>
                                                 <a role="button" tabindex="0"><i class="fa fa-user-secret"></i> <span>کریکولم درسی</span></a>
                                                 <ul>
-                                                    <li><a href="form-common.html"><i class="fa fa-caret-right"></i> Common Elements</a></li>
-                                                    <li><a href="form-validate.html"><i class="fa fa-caret-right"></i> Validation Elements</a></li>
-                                                    <li><a href="form-wizard.html"><i class="fa fa-caret-right"></i> Form Wizard <span class="badge badge-success">13</span></a></li>
-                                                    <li><a href="form-upload.html"><i class="fa fa-caret-right"></i> File Upload</a></li>
-                                                    <li><a href="form-imgcrop.html"><i class="fa fa-caret-right"></i> Image Crop</a></li>
+                                                    <li><a href="form-common.html"><i class="fa fa-caret-right"></i> لیست مضامین</a></li>
+                                                    <li><a href="form-validate.html"><i class="fa fa-caret-right"></i> لیست کورس ها</a></li>
+                                        
                                                 </ul>
                                             </li>
                                             <li>
@@ -1177,7 +1179,7 @@
         <!-- ============================================
         ============== Vendor JavaScripts ===============
         ============================================= -->
-        <script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src=https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
 
         <script src="assets/js/vendor/bootstrap/bootstrap.min.js"></script>
@@ -1213,7 +1215,11 @@
 
         <script src="assets/js/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 
-        <script src="assets/js/vendor/datatables/js/jquery.dataTables.min.js"></script>
+		<script src="assets/js/vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="assets/js/vendor/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
+        <script src="assets/js/vendor/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+        <script src="assets/js/vendor/datatables/extensions/ColVis/js/dataTables.colVis.min.js"></script>
+        <script src="assets/js/vendor/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
         <script src="assets/js/vendor/datatables/extensions/dataTables.bootstrap.js"></script>
 
         <script src="assets/js/vendor/chosen/chosen.jquery.min.js"></script>
@@ -1453,6 +1459,31 @@
                     height: 143   //set editable area's height
                 });
                 //*load wysiwyg editor
+				
+				//initialize responsive datatable
+                var table3 = $('#responsive-usage').DataTable({
+                    "ajax": 'assets/extras/datatables-responsive.json',
+                    "columns": [
+                        { "data": "id" },
+                        { "data": "firstName" },
+                        { "data": "lastName" },
+                        { "data": "tel" },
+                        { "data": "address" },
+                        { "data": "city" },
+                        { "data": "state" },
+                        { "data": "zip" }
+                    ],
+                    "aoColumnDefs": [
+                      { 'bSortable': false, 'aTargets': [ "no-sort" ] }
+                    ]
+                });
+                //*initialize responsive datatable
+
+                //initialize responsive datatable
+                function stateChange(iColumn, bVisible) {
+                    console.log('The column', iColumn, ' has changed its status to', bVisible);
+                }
+
             });
         </script>
         <!--/ Page Specific Scripts -->
@@ -1471,7 +1502,60 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
-
+		<script>
+jQuery(document).ready(function(){
+  
+    var table = $('#sample_1').DataTable({ 
+        
+     
+       dom: '<"row"<"col-md-4"T><"col-md-4"f><"col-md-4"l>>rt<"row"<"col-md-6"i><"col-md-6"p>>',
+      tableTools :{
+      "sSwfPath": "copy_csv_xls_pdf.swf",
+      "sRowSelect": "os",
+      "aButtons": [ {
+                    "sExtends": "select_all",
+                    "sButtonText": '<i class="fa fa-check-square-o"></i>'
+                }, {
+                    "sExtends": "select_none",
+                    "sButtonText": '<i class="fa fa-square-o"></i>'
+                }] ,
+                "fnRowSelected": function ( nodes ) {
+                $(".edit,.del").removeAttr('disabled');
+                
+            } ,
+      "fnRowDeselected": function ( nodes ) {
+                $(".edit,.del").attr('disabled',true);
+            }            
+      },
+      
+     stateSave: true,
+     
+     order: [ 0, 'asc' ],
+   
+    language: {
+            "lengthMenu": "نمایش _MENU_ سطر",
+            "zeroRecords": "هیچ نتیجه ای یافت نشد.",
+            "info": "صفحه _PAGE_ از _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(فیلتر شده از بین _MAX_ ریکارد)",
+            "search": "جستجو: ",
+            
+        }
+    });
+    var tt = new $.fn.dataTable.TableTools( table ,{ "aButtons": [ {
+                    "sExtends": "print",
+                    "sButtonText": '<i class="fa fa-print"></i>'
+                }
+               /* ,       {
+                        "sExtends":    "collection",
+                        "sButtonText": "ذخیره",
+                        "aButtons":    [ "pdf","xls", "csv" ]
+                    } */
+                    ]} );
+            //Warning PDF libarary doesnt support UTF-8 character set. wait for any updates
+    $( tt.fnContainer() ).appendTo('div.actions ');
+})
+</script>
     </body>
 
 <!-- Mirrored from www.tattek.sk/minovate-noAngular/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 09 Apr 2016 20:07:28 GMT -->
