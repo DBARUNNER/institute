@@ -18,4 +18,12 @@ Route::get('/', function () {
 
 Route::get('home',function() {
 	return view('index');
-});	
+});
+
+//Reister Kankor Students 
+Route::get('registerKankor',function(){
+	return view('kankorRegister');
+});
+
+//Insert Kankor students number
+Route::get('kankorNumber','kankorController@kankorNumber');
