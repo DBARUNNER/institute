@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::get('home',function() {
 	return view('index');
+
 });
 
 //Reister Kankor Students 
@@ -27,3 +28,8 @@ Route::get('registerKankor',function(){
 
 //Insert Kankor students number
 Route::get('kankorNumber','kankorController@kankorNumber');
+	
+
+Route::get('student',function() {
+	return view('student_list');
+});

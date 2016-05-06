@@ -17,15 +17,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
-
         @yield('page-css')
 
       
-
-
-
 
     </head>
 
@@ -448,7 +442,7 @@
                                             <li>
                                                 <a role="button" tabindex="0"><i class="fa fa-users"></i> <span>مدیریت محصلان</span></a>
                                                 <ul>
-                                                    <li><a href="mail-inbox.html"><i class="fa fa-caret-right"></i>لیست محصلان</a></li>
+                                                    <li><a href="student"><i class="fa fa-caret-right"></i>لیست محصلان</a></li>
                                                     <li><a href="mail-compose.html"><i class="fa fa-caret-right"></i>ساختن حاضری محصلان</a></li>
                                                     <li><a href="mail-single.html"><i class="fa fa-caret-right"></i>ترانسکریپت و دیپلوم</a></li>
                                                 </ul>
@@ -456,11 +450,9 @@
                                             <li>
                                                 <a role="button" tabindex="0"><i class="fa fa-user-secret"></i> <span>کریکولم درسی</span></a>
                                                 <ul>
-                                                    <li><a href="form-common.html"><i class="fa fa-caret-right"></i> Common Elements</a></li>
-                                                    <li><a href="form-validate.html"><i class="fa fa-caret-right"></i> Validation Elements</a></li>
-                                                    <li><a href="form-wizard.html"><i class="fa fa-caret-right"></i> Form Wizard <span class="badge badge-success">13</span></a></li>
-                                                    <li><a href="form-upload.html"><i class="fa fa-caret-right"></i> File Upload</a></li>
-                                                    <li><a href="form-imgcrop.html"><i class="fa fa-caret-right"></i> Image Crop</a></li>
+                                                    <li><a href="form-common.html"><i class="fa fa-caret-right"></i> لیست مضامین</a></li>
+                                                    <li><a href="form-validate.html"><i class="fa fa-caret-right"></i> لیست کورس ها</a></li>
+                                        
                                                 </ul>
                                             </li>
                                             <li>
@@ -1134,7 +1126,6 @@
 
 
           @yield('page-script')
-
 
     </body>
 
